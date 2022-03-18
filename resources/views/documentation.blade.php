@@ -19,6 +19,10 @@
             margin-bottom: 40px;
         }
 
+        .title {
+            color: #0d6efd;
+        }
+
     </style>
 </head>
 
@@ -50,6 +54,7 @@ GET http://127.0.0.1:8000/api/menus
                             <h5 class="title">
                                 Response
                             </h5>
+                            <i>Jika memiliki data</i>
                             <pre class="pt-3 ps-2">
 {
     "status_code": 200,
@@ -92,6 +97,20 @@ GET http://127.0.0.1:8000/api/menus
     ]
 }
                             </pre>
+                            <i>Jika data kosong</i>
+                            <pre class="pt-3 ps-2">
+{
+    "status_code": 204,
+    "message": 'Data tidak ditemukan'
+}
+                            </pre>
+                            <i>Jika terjadi masalah pada server</i>
+                            <pre class="pt-3 ps-2">
+{
+    "status_code": 400,
+    "message": 'Data gagal ditemukan'
+}
+                            </pre>
                         </div>
                     </div>
                 </div>
@@ -121,11 +140,21 @@ GET http://127.0.0.1:8000/api/vouchers
                             <h5 class="title">
                                 Request
                             </h5>
-                            <pre class="pt-3 ps-2">
-{
-    "kode": "puas" //optional
-}
-                            </pre>
+
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>Param</th>
+                                    <th>Tipe Data</th>
+                                    <th>Tipe</th>
+                                    <th>Keterangan</th>
+                                </tr>
+                                <tr>
+                                    <td>kode</td>
+                                    <td>string</td>
+                                    <td class="text-danger">required</td>
+                                    <td>kode voucher yang akan dipakai</td>
+                                </tr>
+                            </table>
                         </div>
                         <div class="content">
                             <h5 class="title">
@@ -172,10 +201,27 @@ GET http://127.0.0.1:8000/api/vouchers
     ]
 }
                             </pre>
+
+                            <i>Jika data kosong</i>
+                            <pre class="pt-3 ps-2">
+{
+    "status_code": 204,
+    "message": 'Data tidak ditemukan'
+}
+                            </pre>
+                            <i>Jika terjadi masalah pada server</i>
+                            <pre class="pt-3 ps-2">
+{
+    "status_code": 400,
+    "message": 'Data gagal ditemukan'
+}
+                            </pre>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="row mt-3">
             <div class="col-6">
                 <div class="card">
                     <div class="card-header">
@@ -192,7 +238,7 @@ GET http://127.0.0.1:8000/api/vouchers
                             <h5 class="title">
                                 Request
                             </h5>
-                            <table class="table">
+                            <table class="table table-bordered">
                                 <tr>
                                     <th>Param</th>
                                     <th>Tipe Data</th>
@@ -221,7 +267,8 @@ GET http://127.0.0.1:8000/api/vouchers
                                     <td>items</td>
                                     <td>array</td>
                                     <td class="text-danger">required</td>
-                                    <td>Berisi kumpulan object yang mengandung id dan harga menu yang masing masing bertipe data int</td>
+                                    <td>Berisi kumpulan object yang mengandung id [int], harga menu [int] dan catatan
+                                        [string]</td>
                                 </tr>
                             </table>
                         </div>
@@ -243,11 +290,72 @@ GET http://127.0.0.1:8000/api/order
     "nominal_diskon": "50",
     "nominal_pesanan": "100000",
     "items": [
-        { "id": 1, "harga": 10000 },
-        { "id": 2, "harga": 10000 },
-        { "id": 3, "harga": 10000 }
+        { "id": 1, "harga": 10000, "catatan": "Tes" },
+        { "id": 2, "harga": 10000, "catatan": "Tes" },
+        { "id": 3, "harga": 10000, "catatan": "Tes" }
     ]
+}                                
+                            </pre>
+                        </div>
+                        <div class="content">
+                            <h5 class="title">
+                                Response
+                            </h5>
+                            <i>Jika order berhasil</i>
+                            <pre class="pt-3 ps-2">
+{
+    "status_code": 200,
+    "message": "Order berhasil dibuat"
 }
+                            </pre>
+                            <i>Jika terjadi masalah pada server</i>
+                            <pre class="pt-3 ps-2">
+{
+    "status_code": 400,
+    "message": 'Data gagal ditemukan'
+}
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-header">
+                        Cancel Order
+                    </div>
+                    <div class="card-body">
+                        <div class="content">
+                            <h5 class="title">
+                                Deskripsi
+                            </h5>
+                            <p>Menghapus data order dan data detail order tabel orders dan detail_order</p>
+                        </div>
+                        <div class="content">
+                            <h5 class="title">
+                                Request
+                            </h5>
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>Param</th>
+                                    <th>Tipe Data</th>
+                                    <th>Tipe</th>
+                                    <th>Keterangan</th>
+                                </tr>
+                                <tr>
+                                    <td>id</td>
+                                    <td>int</td>
+                                    <td class="text-danger">required</td>
+                                    <td>ID order yang akan dihapus</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="content">
+                            <h5 class="title">
+                                HTTP Request
+                            </h5>
+                            <pre class="pt-3 ps-2">
+POST http://127.0.0.1:8000/api/order/cancel/{id}
                             </pre>
                         </div>
                         <div class="content">
@@ -255,7 +363,24 @@ GET http://127.0.0.1:8000/api/order
                                 Response
                             </h5>
                             <pre class="pt-3 ps-2">
-                                
+{
+    "status_code": 200,
+    "message": "Data berhasil dihapus"
+}
+                            </pre>
+                            <i>Jika data tidak ditemukan</i>
+                            <pre class="pt-3 ps-2">
+{
+    "status_code": 204,
+    "message": 'Data tidak ditemukan'
+}
+                            </pre>
+                            <i>Jika terjadi masalah pada server</i>
+                            <pre class="pt-3 ps-2">
+{
+    "status_code": 400,
+    "message": 'Data gagal ditemukan'
+}
                             </pre>
                         </div>
                     </div>
