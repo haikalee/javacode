@@ -14,10 +14,18 @@ class MenusController extends Controller
      */
     public function index(Request $request)
     {
-        $datas = Menu::all();
+        $datas = Menu::select('id', 'nama', 'harga', 'tipe', 'gambar')->get();
+
+        if ($datas) {
+            return response()->json([
+                'status_code' => 200,
+                'datas' => $datas
+            ]);
+        }
+
         return response()->json([
-            'status_code' => 200,
-            'datas' => $datas
+            'status_code' => 404,
+            'message' => 'Data tidak ditemukan'
         ]);
     }
 }

@@ -17,8 +17,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/menus', [MenusController::class, 'index']);
-Route::get('/voucers', [VoucersController::class, 'index']);
-Route::get('/voucer/{id}', [VoucersController::class, 'detail']);
+Route::post('/vouchers', [VoucersController::class, 'index']);
 Route::post('/order', [OrderController::class, 'save']);
-Route::get('/order/{id}', [OrderController::class, 'detail']);
 Route::post('/order/cancel/{id}', [OrderController::class, 'cancel']);

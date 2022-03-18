@@ -7,13 +7,24 @@ use Illuminate\Http\Request;
 
 class VoucersController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $datas = Voucer::where('status', 'aktif')->get();
+        if (isset($request->kode)) {
+            $voucers = Voucer::where('kode', $request->kode)->first();
+        } else {
+            $voucers = Voucer::all();
+        }
+
+        if ($voucers) {
+            return response()->json([
+                'status_code' => 200,
+                'datas' => $voucers
+            ]);
+        }
 
         return response()->json([
-            'status_code' => 200,
-            'datas' => $datas
+            'status_code' => 404,
+            'message' => 'Data tidak ditemukan'
         ]);
     }
 
