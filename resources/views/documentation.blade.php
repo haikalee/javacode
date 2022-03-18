@@ -27,7 +27,6 @@
 </head>
 
 <body>
-
     <div class="container mt-3">
         <div class="row">
             <div class="col-6">
@@ -47,7 +46,7 @@
                                 HTTP Request
                             </h5>
                             <pre class="pt-3 ps-2">
-GET http://127.0.0.1:8000/api/menus
+GET https://tes-mobile.landa.id/api/menus
                             </pre>
                         </div>
                         <div class="content">
@@ -133,7 +132,7 @@ GET http://127.0.0.1:8000/api/menus
                                 HTTP Request
                             </h5>
                             <pre class="pt-3 ps-2">
-GET http://127.0.0.1:8000/api/vouchers
+GET https://tes-mobile.landa.id/api/vouchers
                             </pre>
                         </div>
                         <div class="content">
@@ -277,7 +276,7 @@ GET http://127.0.0.1:8000/api/vouchers
                                 HTTP Request
                             </h5>
                             <pre class="pt-3 ps-2">
-GET http://127.0.0.1:8000/api/order
+GET https://tes-mobile.landa.id/api/order
                             </pre>
                         </div>
                         <div class="content">
@@ -355,7 +354,7 @@ GET http://127.0.0.1:8000/api/order
                                 HTTP Request
                             </h5>
                             <pre class="pt-3 ps-2">
-POST http://127.0.0.1:8000/api/order/cancel/{id}
+POST https://tes-mobile.landa.id/api/order/cancel/{id}
                             </pre>
                         </div>
                         <div class="content">
