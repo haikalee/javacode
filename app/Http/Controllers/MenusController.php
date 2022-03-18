@@ -14,7 +14,6 @@ class MenusController extends Controller
      */
     public function index(Request $request)
     {
-        dd($request->all());
         $datas = Menu::all();
         return response()->json([
             'status_code' => 200,
