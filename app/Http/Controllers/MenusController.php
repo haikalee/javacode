@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Menu;
+use Exception;
 use Illuminate\Http\Request;
 
 class MenusController extends Controller
@@ -14,18 +15,25 @@ class MenusController extends Controller
      */
     public function index(Request $request)
     {
-        $datas = Menu::select('id', 'nama', 'harga', 'tipe', 'gambar')->get();
+        try {
+            $datas = Menu::select('id', 'nama', 'harga', 'tipe', 'gambar')->get();
 
-        if ($datas) {
+            if ($datas) {
+                return response()->json([
+                    'status_code' => 200,
+                    'datas' => $datas
+                ]);
+            }
+
             return response()->json([
-                'status_code' => 200,
-                'datas' => $datas
+                'status_code' => 204,
+                'message' => 'Data tidak ditemukan'
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                'status_code' => 400,
+                'message' => 'Data gagal ditemukan'
             ]);
         }
-
-        return response()->json([
-            'status_code' => 404,
-            'message' => 'Data tidak ditemukan'
-        ]);
     }
 }
