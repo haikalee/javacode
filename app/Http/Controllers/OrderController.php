@@ -12,10 +12,13 @@ class OrderController extends Controller
   public function save(Request $request)
   {
     try {
-      $model = Order::create($request->all());
-      $this->saveDetail($model->id, $request->items);
 
+     
+      $model = Order::create($request->all());
+      $items = json_decode($request->items);
+      $this->saveDetail($model->id, $items);
       return response()->json([
+        "id" => $model->id,
         'status_code' => 200,
         'message' => 'Order berhasil dibuat',
       ]);
@@ -32,10 +35,10 @@ class OrderController extends Controller
     foreach ($data as $item) {
       $data = [];
       $data['order_id'] = $id;
-      $data['menu_id'] = $item["id"];
-      $data['harga'] = $item["harga"];
-      $data['catatan'] = $item["catatan"];
-      OrderDetail::create($data);
+      $data['menu_id'] = $item->id;
+      $data['harga'] = $item->harga;
+      $data['catatan'] = $item->catatan;
+      return OrderDetail::create($data);
     }
   }
 

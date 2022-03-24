@@ -138,16 +138,9 @@ GET https://tes-mobile.landa.id/api/menus
                                     <h5 class="title">
                                         Deskripsi
                                     </h5>
-                                    <p>Mengambil semua data Voucher jika memiliki parameter maka akan mencari seluruh data
-                                        sesuai dengan kode, jika tidak ada parameter maka menampilkan semua data</p>
-                                </div>
-                                <div class="content">
-                                    <h5 class="title">
-                                        HTTP Request
-                                    </h5>
-                                    <pre class="pt-3 ps-2">
-GET https://tes-mobile.landa.id/api/vouchers
-                            </pre>
+                                    <p>
+                                        Mengambil data sesuai dengan nama voucher yang ada di dalam database
+                                    </p>
                                 </div>
                                 <div class="content">
                                     <h5 class="title">
@@ -168,6 +161,15 @@ GET https://tes-mobile.landa.id/api/vouchers
                                         </tr>
                                     </table>
                                 </div>
+                                <div class="content">
+                                    <h5 class="title">
+                                        HTTP Request
+                                    </h5>
+                                    <pre class="pt-3 ps-2">
+POST https://tes-mobile.landa.id/api/vouchers
+                            </pre>
+                                </div>
+                                
                                 <div class="content">
                                     <h5 class="title">
                                         Response
@@ -284,7 +286,7 @@ GET https://tes-mobile.landa.id/api/vouchers
                                         HTTP Request
                                     </h5>
                                     <pre class="pt-3 ps-2">
-GET https://tes-mobile.landa.id/api/order
+POST https://tes-mobile.landa.id/api/order
                             </pre>
                                 </div>
                                 <div class="content">
