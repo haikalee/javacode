@@ -257,7 +257,7 @@ POST https://tes-mobile.landa.id/api/vouchers
                                         <tr>
                                             <td>voucher_id</td>
                                             <td>int</td>
-                                            <td class="text-danger">required</td>
+                                            <td>optional</td>
                                             <td>ID voucher yang akan dipakai</td>
                                         </tr>
                                         <tr>
