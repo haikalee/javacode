@@ -295,7 +295,6 @@ POST https://tes-mobile.landa.id/api/order
                                     </h5>
                                     <pre class="pt-3 ps-2">
 {
-    "voucer_id": "1",
     "nominal_diskon": "50",
     "nominal_pesanan": "100000",
     "items": [

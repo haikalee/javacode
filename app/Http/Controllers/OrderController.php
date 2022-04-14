@@ -11,9 +11,7 @@ class OrderController extends Controller
 {
   public function save(Request $request)
   {
-    try {
-
-     
+    try {     
       $model = Order::create($request->all());
       $items = json_decode($request->items);
       $this->saveDetail($model->id, $items);
